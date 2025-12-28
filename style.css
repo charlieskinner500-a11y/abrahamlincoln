@@ -1,0 +1,948 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: "SF Pro Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #e6e9f1;
+  display: flex;
+  justify-content: center;
+  padding: 24px 12px;
+  color: #0f1d30;
+}
+
+.device {
+  width: 420px;
+  max-width: 100%;
+  background: #f7f8fc;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(15, 29, 48, 0.12);
+  overflow: hidden;
+  position: relative;
+  min-height: 90vh;
+}
+
+.hotspot-admin {
+  display: none;
+}
+
+.screen {
+  display: none;
+  padding: 32px 24px 120px;
+  min-height: 100%;
+  position: relative; /* so absolute children anchor inside the phone */
+}
+
+#license-view {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+.screen.active {
+  display: block;
+}
+
+#lock {
+  background: #fff;
+  padding-top: 64px;
+}
+
+#lock {
+  background: #fff;
+  padding-top: 64px;
+}
+
+/* (optional) keep this if you want home-specific rules later
+#home {
+}
+*/
+
+.lock-icon {
+  width: 110px;
+  height: 110px;
+  margin: 10vh auto 32px; /* centers it */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.lock-icon svg {
+  width: 70%;
+  height: 70%;
+}
+
+.lock-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.pin-dots span {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cfd4dc;
+  border-radius: 50%;
+}
+
+.pin-dots span.filled {
+  background: #1b2333;
+  border-color: #1b2333;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.key {
+  background: #fff;
+  border: none;
+  font-size: 30px;
+  padding: 18px 0;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
+
+.key:active {
+  transform: translateY(1px);
+}
+
+.icon-back svg {
+  width: 26px;
+  height: 26px;
+}
+
+.link {
+  background: none;
+  border: none;
+  font-size: 17px;
+  color: #1a2333;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.hint {
+  text-align: center;
+  color: #7a8597;
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  background: #f0f4f9;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.brand-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.hello {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.card-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 6px 20px rgba(16, 29, 48, 0.06);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.image-card {
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.image-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+.card-icon {
+  width: 42px;
+  height: 42px;
+  background: #f9fbff;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.card-icon.pill {
+  background: #f1f5f8;
+}
+
+.card-icon.car {
+  background: #f1f5f8;
+}
+
+.card-icon .dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #2cc14f;
+  display: inline-block;
+}
+
+.card-icon .line {
+  width: 26px;
+  height: 6px;
+  background: #1b2333;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 8px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #131f2f;
+}
+
+.wide-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 24px rgba(16, 29, 48, 0.12);
+  margin-top: 16px;
+}
+
+.gradient {
+  background: linear-gradient(180deg, #2f4858, #1e3d5d 55%, #2a5875);
+  color: #fff;
+}
+
+.home-licence {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+
+  bottom: calc(74px + 2px); /* overlaps tabbar slightly */
+  
+  padding: 16px 18px;
+  min-height: 120px;
+
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 16px 30px rgba(16, 29, 48, 0.14);
+
+  z-index: 5;
+}
+
+.diag-arrow {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+.home-licence .expand svg {
+  position: relative;
+  top: -3px;
+}
+
+
+
+
+.wide-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.wide-sub {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.expand {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+#license-view .page-title.back {
+  text-align: center;      /* center it */
+  font-size: 18px;         /* slightly smaller */
+  font-weight: 600;        /* less heavy than titles */
+  margin-bottom: 12px;     /* tidy spacing */
+  padding-left: 0;         /* remove left bias */
+}
+
+#license-view .page-title.back {
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 0;
+}
+
+/* move arrow to far left */
+#license-view .page-title.back .chevron {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+button#profileAdminBtn.brand-icon {
+  width: 34px;
+  height: 34px;
+  border: none;
+  padding: 0;
+  background: #f0f4f9;
+}
+
+button#profileAdminBtn img {
+  width: 28px;
+  height: 28px;
+}
+
+.page-title.back {
+  text-align: left;
+  padding-left: 4px;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.list-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 20px rgba(16, 29, 48, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.list-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111f32;
+}
+
+.list-sub {
+  color: #818a99;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.external {
+  font-size: 18px;
+  color: #8fa3b8;
+}
+
+.chevron {
+  font-size: 20px;
+  color: #8fa3b8;
+}
+
+.banner {
+  background: linear-gradient(90deg, #2eb048, #15923c);
+  color: #fff;
+  padding: 18px;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 20px rgba(34, 159, 67, 0.3);
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-section {
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(16, 29, 48, 0.06);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #111f32;
+}
+
+.section-title.small {
+  font-size: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.field span {
+  font-weight: 600;
+  color: #1c2a3f;
+}
+
+.field input {
+  padding: 12px 14px;
+  border: 1.2px solid #d5d9df;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus {
+  border-color: #26a141;
+  box-shadow: 0 0 0 3px rgba(38, 161, 65, 0.15);
+}
+
+.upload-block {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f3f5f8, #e7ebf1);
+  border: 1px solid #d4d7de;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signature {
+  width: 120px;
+  height: 80px;
+  border-radius: 12px;
+  border: 1px solid #d4d7de;
+  display: grid;
+  place-items: center;
+  color: #7b8597;
+  font-style: italic;
+  background: #f6f7fa;
+  overflow: hidden;
+}
+
+.signature img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.signature-placeholder {
+  color: #8a93a3;
+  font-size: 13px;
+}
+
+.upload-btn {
+  width: fit-content;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1.2px solid #d5d9df;
+  background: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.primary {
+  width: calc(100% - 48px);
+  margin: 12px 24px 28px;
+  border: none;
+  background: #25a344;
+  color: #fff;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(36, 162, 69, 0.35);
+}
+
+.primary:active {
+  transform: translateY(1px);
+}
+
+.tabbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e7e9ef;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 8px 4px 12px;
+  gap: 4px;
+  box-shadow: 0 -4px 18px rgba(16, 29, 48, 0.12);
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 8px 4px;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #6d7586;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: transparent;
+  color: #121c2e;
+  font-weight: 700;
+}
+
+.tab .icon {
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+}
+
+.tab .icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: #6d7586;
+  fill: none;
+}
+
+.tab .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.label.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.tab .icon svg * {
+  stroke: inherit;
+}
+
+.tab.active .icon svg {
+  stroke: #121c2e;
+}
+
+.tab.active .icon img {
+  filter: none;
+}
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #f7f8fc;
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+
+#loading-screen img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+#license-view {
+  background: #f7f8fc;
+}
+
+.license-refresh {
+  text-align: center;
+  color: #7c8699;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.license-header {
+  background: #d0e5ce;
+  border-radius: 0px;
+  overflow: hidden;
+  border: 1px solid #c0d9bc;
+  margin-bottom: 12px;
+}
+
+.license-top {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0; /* flat edges */
+}
+
+
+.license-top-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.banner-title {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.banner-sub {
+  font-size: 13px;
+  opacity: 0.92;
+}
+
+.vicroads {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.license-body {
+  display: grid;
+  grid-template-columns: 1fr 12px 1fr;
+  gap: 0;
+  padding: 14px;
+
+  background-image: url("assets/license-bg.jpeg");
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+}
+
+
+
+.license-divider {
+  width: 12px;              /* match image width */
+  height: 100%;
+  border-radius: 0px;
+
+  background-image: url("assets/REALPHOTO1111.jpg");
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 100% auto;
+}
+
+
+
+.photo-box {
+  background: #f0f3f5;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #d4d7de;
+  min-height: 200px;
+  height: 100%;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.qr-card.qr-image {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 14px; /* slightly curved, native feel */
+}
+
+
+.qr-card.qr-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* change to cover if you want edge-to-edge */
+  display: block;
+}
+
+
+.qr-card.qr-image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.qr-card.qr-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* use cover if you want edge-to-edge */
+  display: block;
+}
+
+
+.qr-text {
+  color: #2e3644;
+  font-size: 15px;
+}
+
+.qr-ask {
+  font-weight: 800;
+  color: #1a2333;
+}
+
+.qr-btn {
+  background: #1e2d3f;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 700; /* makes “Reveal QR code” bold */
+  cursor: pointer;
+}
+
+
+.license-banner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.license-pill {
+  background: #e5e7ec;
+  color: #1a2333;
+  padding: 10px;
+  border-radius: 30px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.license-pill.active {
+  background: #2a3a4d;
+  color: #fff;
+}
+
+.name-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.flat {
+  box-shadow: none;
+  border: 1px solid #e3e6ed;
+  display: block;
+  padding: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.muted {
+  color: #7c8699;
+  font-size: 14px;
+}
+
+.value {
+  font-size: 16px;
+  color: #111f32;
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.badge.green {
+  background: #25a344;
+}
+
+.badge.red {
+  background: #d64b3c;
+}
+
+.signature.small {
+  width: 120px;
+  height: 60px;
+  border: 1px solid #d4d7de;
+}
+
+.barcode {
+  margin-top: 10px;
+  height: 50px;
+  background: repeating-linear-gradient(
+    90deg,
+    #111f32 0,
+    #111f32 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  border-radius: 6px;
+  background-color: #f3f5f9;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
+  .device {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .screen {
+    padding: 32px 18px 120px;
+  }
+
+  #lock {
+    padding-top: 48px;
+  }
+
+
+  .keypad {
+    gap: 18px;
+  }
+}
+
+
+/* FORCE the two boxes to be WHITE */
+.license-body > .photo-box,
+.license-body > .qr-card{
+  background: #fff !important;
+}
+
+/* keep the photo box's inner “photo placeholder” look */
+.photo-box{
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #d4d7de;
+}
+
+/* put at the BOTTOM of style.css */
+.brand-icon {
+  display: grid;
+  place-items: center;
+}
+
+/* Home – tweak demerit points logo centering */
+#home .card-grid .image-card:first-child img {
+  position: relative;
+  left: -8px;
+}
+
+
+.brand-icon img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* Visually center the LOCK SHACKLE (top part only) */
+.lock-icon svg path:first-of-type {
+  transform: translateX(+1.75px);
+}
+
+.key {
+  color: #101726; /* or whatever dark color you want */
+}

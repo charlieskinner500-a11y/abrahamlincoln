@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myVic mock</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="myVic">
+  <link rel="apple-touch-icon" href="assets/download.jpeg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loading-screen">
+    <img src="assets/download.jpeg" alt="Loading logo">
+  </div>
+
+  <div class="device">
+    <section id="lock" class="screen active">
+      <div class="lock-icon" aria-hidden="true">
+        <svg viewBox="0 0 72 72">
+          <path fill="#2cb14a" d="M22 30h28c1.7 0 3 1.3 3 3v24c0 1.7-1.3 3-3 3H22c-1.7 0-3-1.3-3-3V33c0-1.7 1.3-3 3-3z"/>
+          <path fill="#2cb14a" d="M27 30v-7c0-6.1 4.9-11 11-11s11 4.9 11 11v7h-5v-7c0-3.3-2.7-6-6-6s-6 2.7-6 6v7h-5z"/>
+          <path fill="#132136" d="M36 36.5c1.7 0 3 1.3 3 3 0 1.1-.6 2.1-1.5 2.6V46l-1.5 2-1.5-2v-3.9c-.9-.5-1.5-1.5-1.5-2.6 0-1.7 1.3-3 3-3z"/>
+        </svg>
+      </div>
+      <div class="lock-title">Please enter your existing PIN code</div>
+      <div class="pin-dots" role="presentation">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="keypad">
+        <button class="key">1</button>
+        <button class="key">2</button>
+        <button class="key">3</button>
+        <button class="key">4</button>
+        <button class="key">5</button>
+        <button class="key">6</button>
+        <button class="key">7</button>
+        <button class="key">8</button>
+        <button class="key">9</button>
+        <button class="link forgot">Forgot?</button>
+        <button class="key">0</button>
+        <button class="key icon-back" aria-label="Backspace">
+          <svg viewBox="0 0 24 24">
+            <path fill="none" stroke="#101726" stroke-width="1.4" d="M11 7l5 5-5 5M8 7h3"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section id="home" class="screen">
+      <header class="top">
+        <div class="brand-icon" aria-hidden="true">
+          <img src="assets/download.jpeg" alt="Brand logo" />
+        </div>
+        <div class="greeting">
+          <div class="hello">Hi Charlie</div>
+        </div>
+      </header>
+      <div class="card-grid">
+        <article class="card image-card">
+          <img src="assets/IMG_0035.jpeg" alt="Demerit points balance">
+        </article>
+        <article class="card image-card">
+          <img src="assets/IMG_0036.jpeg" alt="Registered vehicles">
+        </article>
+        <article class="wide-card gradient clickable home-licence" data-target-screen="license-view">
+          <div>
+            <div class="wide-title">My licence</div>
+            <div class="wide-sub">Tap to view licence</div>
+          </div>
+          <div class="expand" aria-hidden="true">
+  <svg viewBox="0 0 24 24" class="diag-arrow">
+    <!-- diagonal line -->
+    <line x1="4" y1="20" x2="20" y2="4" />
+
+    <!-- arrow head (top right) -->
+    <polyline points="14,4 20,4 20,10" />
+
+    <!-- arrow head (bottom left) -->
+    <polyline points="4,14 4,20 10,20" />
+  </svg>
+</div>
+
+        </article>
+      </div>
+    </section>
+
+    <section id="vehicles" class="screen">
+      <div class="page-title">Vehicles</div>
+      <div class="list">
+        <div class="list-card">
+          <div>
+            <div class="list-title">My registered vehicles</div>
+            <div class="list-sub">View all registered vehicles</div>
+          </div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div>
+            <div class="list-title">Manage registration renewal</div>
+            <div class="list-sub">Renew your registration when it's due</div>
+          </div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div>
+            <div class="list-title">Change your garage address</div>
+          </div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div>
+            <div class="list-title">Apprentice registration discount</div>
+          </div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div>
+            <div class="list-title">Unregistered vehicle permits</div>
+          </div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div>
+            <div class="list-title">My vehicle reports</div>
+          </div>
+          <span class="external">></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="licence" class="screen">
+      <div class="page-title">Licence</div>
+      <article class="wide-card gradient clickable" data-target-screen="license-view">
+        <div>
+          <div class="wide-title">My licence</div>
+          <div class="wide-sub">Tap to view licence</div>
+        </div>
+        <div class="expand" aria-hidden="true">-></div>
+      </article>
+      <div class="list">
+        <div class="list-card">
+          <div class="list-title">View demerit points</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Order driver history report</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Update address on licence</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Access myLearners</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Replace licence</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Manage licence renewal</div>
+          <span class="external">></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="license-view" class="screen">
+      <div class="page-title back clickable" data-target-screen="home"><span class="chevron"><</span> View details</div>
+      <div class="license-refresh">Last refreshed: <span id="refreshTime">Wed, 24 Dec 2025, 16:59</span></div>
+
+      <div class="license-header">
+       <div class="license-top license-top-image">
+  <img src="assets/licence-header.jpeg" alt="Probationary Driver Licence header">
+</div>
+
+        <div class="license-body">
+  <div class="photo-box">
+    <img id="licPhoto" src="" alt="License photo">
+  </div>
+
+  <div class="license-divider" aria-hidden="true"></div>
+
+ <div class="qr-card qr-image">
+  <img src="assets/IMG_0040.JPG" alt="QR consent information">
+</div>
+
+</div>
+
+      </div>
+
+      <div class="license-banner">
+        <div class="license-pill active">Permit</div>
+        <div class="license-pill">Identity</div>
+        <div class="license-pill">Age</div>
+      </div>
+
+      <div class="list-card flat">
+        <div class="name-title" id="licName">Charlie Skinner</div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Permit number</div>
+            <div class="value" id="licPermit">73204715</div>
+          </div>
+          <div class="col">
+            <div class="muted">Expiry</div>
+            <div class="value" id="licExpiry">05/02/2028</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Permit type</div>
+            <div class="value"><span class="badge red">P</span> <span id="licPermitType">Car</span></div>
+          </div>
+          <div class="col">
+            <div class="muted">Date of birth</div>
+            <div class="value" id="licDob">22/07/07</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-card flat">
+        <div class="row">
+          <div class="col">
+            <div class="muted">Address</div>
+            <div class="value" id="licAddress">76 Nott st, Springfield, VIC 3000</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Signature</div>
+            <div class="signature small">
+              <img id="licSignature" src="" alt="Signature">
+              <div id="licSignatureEmpty" class="signature-placeholder">No signature available</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-card flat">
+        <div class="section-title small">Car learner permit details</div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Permit status</div>
+            <div class="value"><span class="badge green">●</span> Current</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Proficiency</div>
+            <div class="value"><span class="badge red">P</span> Probationary</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Issue date</div>
+            <div class="value" id="licIssue">05/02/2025</div>
+          </div>
+          <div class="col">
+            <div class="muted">Expiry</div>
+            <div class="value" id="licExpiry2">05/02/2028</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-card flat">
+        <div class="section-title small">Other details</div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Card number</div>
+            <div class="value" id="licCard">********</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="muted">Victoria Police barcode</div>
+            <div class="barcode"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="payments" class="screen">
+      <div class="page-title">Payments</div>
+      <div class="list">
+        <div class="list-card">
+          <div>
+            <div class="list-title">Manage payment methods</div>
+            <div class="list-sub">Store your credit card and bank account details to make payments</div>
+          </div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div>
+            <div class="list-title">Direct debit payments</div>
+            <div class="list-sub">Manage direct debit settings</div>
+          </div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div>
+            <div class="list-title">Transaction history</div>
+            <div class="list-sub">View recent transactions made using your myVicRoads account</div>
+          </div>
+          <span class="external">></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="screen">
+      <div class="page-title profile-header">
+        <button class="brand-icon clickable" id="profileAdminBtn" aria-label="Open admin">
+          <img src="assets/download.jpeg" alt="Brand logo">
+        </button>
+        <span>Profile</span>
+      </div>
+      <div class="list">
+        <div class="list-card">
+          <div class="list-title">Personal information</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Addresses</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Security settings</div>
+          <span class="external">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Passkey settings</div>
+          <span class="chevron">></span>
+        </div>
+      </div>
+      <div class="list">
+        <div class="list-card">
+          <div class="list-title">Biometrics and settings</div>
+          <div class="list-sub">Enable biometrics and deactivate card or account</div>
+          <span class="chevron">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Help and info</div>
+          <span class="chevron">></span>
+        </div>
+        <div class="list-card">
+          <div class="list-title">Provide app feedback</div>
+          <span class="external">></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="admin" class="screen">
+      <div class="page-title back"><span class="chevron"><</span> Admin Panel</div>
+      <div class="banner">
+        <div>
+          <div class="wide-title">Editor mode</div>
+            <div class="wide-sub">Put in your preferences for your information</div>
+          </div>
+        </div>
+
+      <form class="form">
+        <div class="form-section">
+          <div class="section-title">Personal Information</div>
+          <label class="field">
+            <span>Full Name</span>
+            <input type="text" name="fullName" value="Charlie Skinner">
+          </label>
+          <label class="field">
+            <span>First Name (for greeting)</span>
+            <input type="text" name="firstName" value="Charlie">
+          </label>
+          <label class="field">
+            <span>Address Line 1</span>
+            <input type="text" name="address1" value="76 Nott st">
+          </label>
+          <label class="field">
+            <span>Address Line 2</span>
+            <input type="text" name="address2" value="Springfield, VIC 3000">
+          </label>
+          <label class="field">
+            <span>Date of Birth</span>
+            <input type="text" name="dob" value="22/07/07">
+          </label>
+          <div class="upload-block">
+            <div class="section-title small">License Photo</div>
+            <div class="avatar">
+              <img id="avatarPreview" src="" alt="License photo preview">
+            </div>
+            <input type="file" id="photoInput" accept="image/*" hidden>
+            <button type="button" class="upload-btn" id="photoBtn">Upload Photo</button>
+          </div>
+          <div class="upload-block">
+            <div class="section-title small">Signature Image</div>
+            <div class="signature">
+              <img id="signaturePreview" src="" alt="Signature preview">
+            </div>
+            <input type="file" id="signatureInput" accept="image/*" hidden>
+            <button type="button" class="upload-btn" id="signatureBtn">Upload Signature</button>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="section-title">License Information</div>
+          <label class="field">
+            <span>Permit Number</span>
+            <input type="text" name="permit" value="73204715">
+          </label>
+          <label class="field">
+            <span>Issue Date</span>
+            <input type="text" name="issueDate" value="05/02/2025">
+          </label>
+          <label class="field">
+            <span>Expiry Date</span>
+            <input type="text" name="expiryDate" value="05/02/2028">
+          </label>
+          <label class="field">
+            <span>Card Number</span>
+            <input type="text" name="cardNumber" value="P5295804">
+          </label>
+        </div>
+
+        <div class="form-section">
+          <div class="section-title">Demerit Points</div>
+          <label class="field">
+            <span>Current Balance</span>
+            <input type="text" name="currentBalance" value="0">
+          </label>
+          <label class="field">
+            <span>Threshold</span>
+            <input type="text" name="threshold" value="12">
+          </label>
+        </div>
+      </form>
+
+      <button class="primary" id="saveBtn" type="button">Save All Changes</button>
+    </section>
+
+    <nav class="tabbar hidden">
+      <button data-target="home" class="tab active">
+        <span class="icon"><img src="assets/Screenshot 2025-12-25 at 6.58.49 pm.png" alt=""></span>
+        <span class="label visually-hidden">Home</span>
+      </button>
+      <button data-target="vehicles" class="tab">
+        <span class="icon"><img src="assets/Screenshot 2025-12-25 at 6.58.54 pm.png" alt=""></span>
+        <span class="label visually-hidden">Vehicles</span>
+      </button>
+      <button data-target="licence" class="tab">
+        <span class="icon"><img src="assets/Screenshot 2025-12-25 at 6.59.01 pm.png" alt=""></span>
+        <span class="label visually-hidden">Licence</span>
+      </button>
+      <button data-target="payments" class="tab">
+        <span class="icon"><img src="assets/Screenshot 2025-12-25 at 6.59.08 pm.png" alt=""></span>
+        <span class="label visually-hidden">Payments</span>
+      </button>
+      <button data-target="profile" class="tab">
+        <span class="icon"><img src="assets/Screenshot 2025-12-25 at 6.59.14 pm.png" alt=""></span>
+        <span class="label visually-hidden">Profile</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
