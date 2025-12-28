@@ -12,10 +12,11 @@ export async function onRequestPost({ request, env }) {
   const key = url.searchParams.get("key") || "config";
 
   // ✅ save JUST the value into KV under that key
-  await env.DATABASE.put(key, JSON.stringify(value));
+  await env.SITE_KV.put(key, JSON.stringify(value));
 
   return new Response(JSON.stringify({ success: true }), {
     headers: { "content-type": "application/json" },
   });
 }
 
+// redeploy
