@@ -36,5 +36,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   await env.SITE_KV.put(body.key, JSON.stringify(body.value ?? null));
 
-  return
-
+  return new Response(JSON.stringify({ success: true }), {
+    headers: {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+    },
+  });
+};
