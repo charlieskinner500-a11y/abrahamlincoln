@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+(function () {
+  const url = new URL(window.location.href);
+  if (url.searchParams.has("v")) return;
+
+  let version = localStorage.getItem("site_version");
+  if (!version) {
+    version = Math.random().toString(36).slice(2, 10);
+    localStorage.setItem("site_version", version);
+  }
+
+  url.searchParams.set("v", version);
+  window.location.replace(url.toString());
+})();
+</script>
+
   <base href="/" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
