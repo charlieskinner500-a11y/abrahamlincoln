@@ -44,17 +44,30 @@ const KV_KEY = `config:${VERSION_ID}`;
 const getAdminToken = () => localStorage.getItem("adminToken") || "";
 
 
-async function loadConfig() {
+async function saveConfig(value) {
   const token = getAdminToken();
-  const res = await fetch(`/api/config?key=${encodeURIComponent(KV_KEY)}`, {
-  cache: "no-store",
-});
 
+  const res = await fetch(
+    `/api/save?key=${encodeURIComponent(KV_KEY)}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Admin-Token": token,
+      },
+      body: JSON.stringify(value),
+    }
+  );
 
-  if (!res.ok) return null;
-  const data = await res.json();
-  return data.value ?? null;
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text || "Save failed");
+  }
+
+  return true;
 }
+
+
 
 
 
