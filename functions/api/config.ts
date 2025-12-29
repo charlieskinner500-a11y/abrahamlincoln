@@ -1,6 +1,5 @@
 export interface Env {
   SITE_KV: KVNamespace;
-  ADMIN_TOKEN: string;
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
@@ -9,45 +8,28 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
     const key = url.searchParams.get("key");
 
     if (!key) {
-      return new Response("Missing key", { status: 400 });
+      return new Response(JSON.stringify({ value: null }), {
+        headers: { "content-type": "application/json" },
+      });
     }
 
-    const value = await env.SITE_KV.get(key, { type: "json" });
+    const value = await env.SITE_KV.get(key);
 
-    return new Response(JSON.stringify({ value }), {
-      headers: {
-        "content-type": "application/json",
-        "cache-control": "no-store",
-      },
-    });
-  } catch (err) {
-    return new Response("Server error", { status: 500 });
+    return new Response(
+      JSON.stringify({ value: value ? JSON.parse(value) : null }),
+      {
+        headers: {
+          "content-type": "application/json",
+          "cache-control": "no-store",
+        },
+      }
+    );
+  } catch (e) {
+    return new Response(
+      JSON.stringify({ error: "config read failed" }),
+      { status: 500 }
+    );
   }
 };
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  try {
-    const adminToken = request.headers.get("x-admin-token");
-    if (adminToken !== env.ADMIN_TOKEN) {
-      return new Response("Unauthorized", { status: 401 });
-    }
-
-    const body = await request.json().catch(() => null);
-
-    if (!body || !body.key) {
-      return new Response("Invalid body", { status: 400 });
-    }
-
-    await env.SITE_KV.put(body.key, JSON.stringify(body.value ?? null));
-
-    return new Response(JSON.stringify({ success: true }), {
-      headers: {
-        "content-type": "application/json",
-        "cache-control": "no-store",
-      },
-    });
-  } catch (err) {
-    return new Response("Server error", { status: 500 });
-  }
-};
 
