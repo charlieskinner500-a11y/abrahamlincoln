@@ -17,9 +17,6 @@ const inputs = {
   cardNumber: form?.querySelector('[name="cardNumber"]'),
 };
 
-const params = new URLSearchParams(window.location.search);
-const CONFIG_ID = params.get("id") || "default";
-
 
 const state = {
   fullName: inputs.fullName?.value || 'Charlie Skinner',
