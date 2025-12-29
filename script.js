@@ -1,21 +1,4 @@
-(function () {
-  const url = new URL(window.location.href);
 
-  // If URL already has a version, do nothing
-  if (url.searchParams.has("v")) return;
-
-  // Check if we've already generated one for this device
-  let version = localStorage.getItem("site_version");
-
-  if (!version) {
-    version = crypto.randomUUID().slice(0, 8); // short + clean
-    localStorage.setItem("site_version", version);
-  }
-
-  // Redirect to unique URL
-  url.searchParams.set("v", version);
-  window.location.replace(url.toString());
-})();
 
 
 const screens = Array.from(document.querySelectorAll('.screen'));
