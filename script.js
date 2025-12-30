@@ -47,7 +47,7 @@ async function saveConfig(value) {
   const token = getAdminToken();
 
   const res = await fetch(
-    `/api/save?key=${encodeURIComponent(KV_KEY)}`,
+    `/api/save?key=${KV_KEY}`,
     {
       method: "POST",
       headers: {
@@ -73,7 +73,7 @@ async function saveConfig(value) {
 
 async function loadConfig() {
   const res = await fetch(
-    `/api/config?key=${encodeURIComponent(KV_KEY)}`,
+    `/api/config?key=${KV_KEY}`,
     { cache: "no-store" }
   );
 
