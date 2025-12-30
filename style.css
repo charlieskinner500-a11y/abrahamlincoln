@@ -948,3 +948,12 @@ button#profileAdminBtn img {
 .key {
   color: #101726; /* or whatever dark color you want */
 }
+
+.photo-box img,
+#licPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
