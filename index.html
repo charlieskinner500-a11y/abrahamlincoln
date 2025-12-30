@@ -5,36 +5,6 @@
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="0" />
 
-<script>
-if (!location.search.includes("v=")) {
-  let v = localStorage.getItem("site_version");
-  if (!v) {
-    v = Math.random().toString(36).slice(2, 10);
-    localStorage.setItem("site_version", v);
-  }
-  location.replace(location.pathname + "?v=" + v);
-}
-</script>
-
-  <script>
-alert("HEAD SCRIPT RAN");
-</script>
-
-  <script>
-(function () {
-  const url = new URL(window.location.href);
-  if (url.searchParams.has("v")) return;
-
-  let version = localStorage.getItem("site_version");
-  if (!version) {
-    version = Math.random().toString(36).slice(2, 10);
-    localStorage.setItem("site_version", version);
-  }
-
-  url.searchParams.set("v", version);
-  window.location.replace(url.toString());
-})();
-</script>
 
   <base href="/" />
   <meta charset="UTF-8">

@@ -1,8 +1,8 @@
 {
   "name": "myVic Mock",
   "short_name": "myVic",
-  "start_url": ".",
-  "scope": ".",
+  "start_url": "/?v=__BOOT__",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f7f8fc",
   "theme_color": "#ffffff",
