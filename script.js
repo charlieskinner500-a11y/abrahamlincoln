@@ -35,53 +35,41 @@ const state = {
   signature: '',
 };
 
-const KV_KEY = "config:main";
+const KV_KEY = "config";
 
-
-
-// --- KV API helpers (put under `state`) ---
+// --- KV API helpers ---
 const getAdminToken = () => localStorage.getItem("adminToken") || "";
-
 
 async function saveConfig(value) {
   const token = getAdminToken();
 
-  const res = await fetch(
-    `/api/save?key=${KV_KEY}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Admin-Token": token,
-      },
-      body: JSON.stringify({ value }), // 👈 THIS is the critical fix
-    }
-  );
+  const res = await fetch(`/api/save?key=${KV_KEY}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Admin-Token": token,
+    },
+    body: JSON.stringify({ value }),
+  });
 
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(text);
+    throw new Error(await res.text());
   }
 
   return res.json();
 }
 
-
-
-
-
-
 async function loadConfig() {
-  const res = await fetch(
-    `/api/config?key=${KV_KEY}`,
-    { cache: "no-store" }
-  );
+  const res = await fetch(`/api/config?key=${KV_KEY}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) return null;
 
   const data = await res.json();
   return data.value ?? null;
 }
+
 
 
 
